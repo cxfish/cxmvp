@@ -27,6 +27,17 @@ public class MyApplication extends CxApplication
 ......
 ```
 
+Registered in app's AndroidManifest.xml:
+
+```Java
+public class MyApplication extends CxApplication
+	<activity
+            android:name="com.hcx.framework.cxmvplibrary.baseact.NaviActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+```
+
+
 if you want to use ButterKnife in your project, in your own app gradle:
 
 ```Java
