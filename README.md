@@ -18,5 +18,10 @@ public class MyApplication extends CxApplication
 ......
 ```
 
+if you want to use ButterKnife in your project, in your own app gradle:
 
-
+```Java
+dependencies {
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+}
+```
