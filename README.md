@@ -3,6 +3,15 @@ Explain
 
 
 ```Java
+
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+
+
 dependencies {
     implementation 'com.github.cxfish:cxmvp:1.0'
 }
@@ -10,7 +19,7 @@ dependencies {
 
 
 This project contains rxjava2、Glide、Butterknife and rxlifecycle2.
-if you want to develop with cxmvp, you should Let your own project's App inherit CxAppliction：
+if you want to develop with cxmvp, you should Let your own project's App extends CxAppliction：
 
 
 ```Java
