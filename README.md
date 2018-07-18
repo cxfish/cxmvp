@@ -30,10 +30,10 @@ public class MyApplication extends CxApplication
 Registered in app's AndroidManifest.xml:
 
 ```Java
-	<activity
-            android:name="com.hcx.framework.cxmvplibrary.baseact.NaviActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
+<activity
+     android:name="com.hcx.framework.cxmvplibrary.baseact.NaviActivity"
+     android:configChanges="orientation|keyboardHidden|screenSize"
+     android:windowSoftInputMode="adjustPan|stateHidden" />
 ```
 
 
