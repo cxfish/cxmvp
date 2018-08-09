@@ -43,7 +43,7 @@ public class DemoFrg extends BaseMvpFragment implements DemoView {
 
     @Override
     public void initView(View view) {
-        setTime("09:00:00");
+
     }
 
 }

@@ -39,27 +39,11 @@ import io.reactivex.disposables.Disposable;
  * @param <V>
  * @param <T>
  */
-public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPresenter<V>> extends RxFragment implements BaseFrgView, FragmentBackHandler, View.OnClickListener {
+public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPresenter<V>> extends RxFragment implements BaseFrgView, FragmentBackHandler {
 
     public T presenter;
     protected NaviActivity act;
     protected View rootView;
-    //头部返回按钮
-    private TextView tvBack;
-    //头部时间
-    private TextView tvTime;
-    //头部布局
-    RelativeLayout rlStatusBar;
-    //wifi图标
-    private ImageView ivWifi;
-    //蓝牙图标
-    private ImageView ivBluetooth;
-    //U盘图标
-    private ImageView ivUsb;
-    //内存提示
-    private TextView tvTipsMemory;
-    //网络提示
-    private TextView tvTipsNet;
 
     @Override
     public void onAttach(Activity activity) {
@@ -92,16 +76,7 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
     }
 
     private void initTitleLayout() {
-        rlStatusBar = getActivity().findViewById(R.id.rl_statusBar);
-        tvBack = getActivity().findViewById(R.id.tv_back);
-        tvTime = getActivity().findViewById(R.id.tv_time);
-        ivWifi = getActivity().findViewById(R.id.iv_wifi);
-        ivBluetooth = getActivity().findViewById(R.id.iv_bluetooth);
-        ivUsb = getActivity().findViewById(R.id.iv_usb);
-        tvTipsMemory = getActivity().findViewById(R.id.tv_tipsMemory);
-        tvTipsNet = getActivity().findViewById(R.id.tv_tipsNet);
 
-        tvBack.setOnClickListener(this);
     }
 
     @Override
@@ -221,67 +196,7 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
         imm.hideSoftInputFromWindow(getActivity().getWindow().getDecorView().getWindowToken(), 0);
     }
 
-    /**
-     * 设置设备时间
-     *
-     * @param time
-     */
-    public void setTime(String time) {
-        TypeSafer.text(tvTime, time);
-    }
 
-    @SuppressLint("InvalidR2Usage")
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.tv_back) {
-            back();
 
-        }
-    }
 
-    @Override
-    public void setBackText(String backText) {
-        TypeSafer.text(tvBack,backText);
-    }
-
-    @Override
-    public void hideMemoryTips() {
-        tvTipsMemory.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showMemoryTips() {
-        tvTipsMemory.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideNetTips() {
-        tvTipsNet.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showNetTips() {
-        tvTipsNet.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideBack() {
-        tvBack.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showBack() {
-        tvBack.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideStatusBar() {
-        rlStatusBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void showStatusBar() {
-        rlStatusBar.setVisibility(View.VISIBLE);
-    }
 }

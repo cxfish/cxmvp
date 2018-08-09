@@ -34,7 +34,7 @@ public class NaviActivity extends AppCompatActivity {
         fragment.setActivity(this);
         //去掉Activity上面的状态栏
         getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
-        setContentView(R.layout.act_common);
+        setContentView(R.layout.frg_common);
         addFragment();
     }
 

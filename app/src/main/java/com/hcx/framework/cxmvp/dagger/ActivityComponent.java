@@ -1,6 +1,7 @@
 package com.hcx.framework.cxmvp.dagger;
 
 import com.hcx.framework.cxmvp.DemoFrg;
+import com.hcx.framework.cxmvp.MainAct;
 
 import dagger.Subcomponent;
 
@@ -13,6 +14,9 @@ import dagger.Subcomponent;
 public interface ActivityComponent {
 
     //在这里提供注册方法
+
+    void inJect(MainAct act);
+
     void inJect(DemoFrg frg);
 
 
