@@ -1,8 +1,10 @@
 package com.hcx.framework.cxmvplibrary.baseact;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.hcx.framework.cxmvplibrary.CxApplication;
+import com.hcx.framework.cxmvplibrary.R;
 import com.hcx.framework.cxmvplibrary.utils.ToastUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.android.ActivityEvent;
@@ -26,6 +28,9 @@ public abstract class BaseMvpActivity<V extends BaseActView, T extends BaseActPr
         inJect();
         presenter = initPresenter();
         presenter.attachView(this);
+        //去掉Activity上面的状态栏
+        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
+        setContentView(R.layout.act_common);
         setContentView(initRootView());
         ButterKnife.bind(this);
         initView();

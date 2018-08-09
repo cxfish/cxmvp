@@ -3,6 +3,7 @@ package com.hcx.framework.cxmvplibrary.baseact;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 
 import com.hcx.framework.cxmvplibrary.R;
 import com.hcx.framework.cxmvplibrary.basefrg.BaseMvpFragment;
@@ -31,6 +32,8 @@ public class NaviActivity extends AppCompatActivity {
         }
         fragment.setArguments(getIntent().getExtras());
         fragment.setActivity(this);
+        //去掉Activity上面的状态栏
+        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
         setContentView(R.layout.act_common);
         addFragment();
     }

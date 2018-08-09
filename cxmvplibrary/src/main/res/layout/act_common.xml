@@ -9,9 +9,8 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/rl_title"
-        layout="@layout/layout_title"
-        android:visibility="gone" />
+        android:id="@+id/rl_statusBar"
+        layout="@layout/layout_status_bar"/>
 
     <FrameLayout
         android:id="@+id/act_content"

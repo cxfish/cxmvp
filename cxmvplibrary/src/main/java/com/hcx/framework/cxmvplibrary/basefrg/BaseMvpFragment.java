@@ -49,7 +49,7 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
     //头部时间
     private TextView tvTime;
     //头部布局
-    RelativeLayout rlTitle;
+    RelativeLayout rlStatusBar;
     //wifi图标
     private ImageView ivWifi;
     //蓝牙图标
@@ -87,18 +87,12 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
                 parent.removeView(rootView);
             }
         }
-        //设置标题
-        if (TextUtils.isEmpty(getTitle())) {
-            rlTitle.setVisibility(View.GONE);
-        } else {
-            rlTitle.setVisibility(View.VISIBLE);
-        }
         bindingEvent();
         return rootView;
     }
 
     private void initTitleLayout() {
-        rlTitle = getActivity().findViewById(R.id.rl_title);
+        rlStatusBar = getActivity().findViewById(R.id.rl_statusBar);
         tvBack = getActivity().findViewById(R.id.tv_back);
         tvTime = getActivity().findViewById(R.id.tv_time);
         ivWifi = getActivity().findViewById(R.id.iv_wifi);
@@ -279,5 +273,15 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
     @Override
     public void showBack() {
         tvBack.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideStatusBar() {
+        rlStatusBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showStatusBar() {
+        rlStatusBar.setVisibility(View.VISIBLE);
     }
 }

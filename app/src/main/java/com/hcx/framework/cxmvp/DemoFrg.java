@@ -32,11 +32,6 @@ public class DemoFrg extends BaseMvpFragment implements DemoView {
     }
 
     @Override
-    public String getTitle() {
-        return "设置";
-    }
-
-    @Override
     public BaseFrgPresenter initPresenter() {
         return presenter;
     }

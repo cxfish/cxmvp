@@ -28,4 +28,10 @@ public interface BaseFrgView {
 
     //显示返回按钮
     void showBack();
+
+    //隐藏状态栏
+    void hideStatusBar();
+
+    //显示状态栏
+    void showStatusBar();
 }
