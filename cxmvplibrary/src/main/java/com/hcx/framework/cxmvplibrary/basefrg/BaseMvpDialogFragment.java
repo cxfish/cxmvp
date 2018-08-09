@@ -149,7 +149,7 @@ public abstract class BaseMvpDialogFragment<V extends BaseFrgView, T extends Bas
     }
 
     @Optional
-    @OnClick(R2.id.iv_back)
+    @OnClick(R2.id.tv_back)
     public void back(){
         ActivitySwitcher.addAnimR2L(getActivity());
         ActivitySwitcher.finish(getActivity());

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,14 +44,22 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
     public T presenter;
     protected NaviActivity act;
     protected View rootView;
-    //头部标题
-    public TextView tvTitle;
     //头部返回按钮
-    public ImageView ivBack;
-    //头部信息按钮
-    public TextView tvRight;
+    private TextView tvBack;
+    //头部时间
+    private TextView tvTime;
     //头部布局
     RelativeLayout rlTitle;
+    //wifi图标
+    private ImageView ivWifi;
+    //蓝牙图标
+    private ImageView ivBluetooth;
+    //U盘图标
+    private ImageView ivUsb;
+    //内存提示
+    private TextView tvTipsMemory;
+    //网络提示
+    private TextView tvTipsNet;
 
     @Override
     public void onAttach(Activity activity) {
@@ -79,7 +88,6 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
             }
         }
         //设置标题
-        TypeSafer.text(tvTitle, getTitle());
         if (TextUtils.isEmpty(getTitle())) {
             rlTitle.setVisibility(View.GONE);
         } else {
@@ -91,13 +99,15 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
 
     private void initTitleLayout() {
         rlTitle = getActivity().findViewById(R.id.rl_title);
-        ivBack = getActivity().findViewById(R.id.iv_back);
-        tvTitle = getActivity().findViewById(R.id.tv_title);
-        tvRight = getActivity().findViewById(R.id.tv_right);
+        tvBack = getActivity().findViewById(R.id.tv_back);
+        tvTime = getActivity().findViewById(R.id.tv_time);
+        ivWifi = getActivity().findViewById(R.id.iv_wifi);
+        ivBluetooth = getActivity().findViewById(R.id.iv_bluetooth);
+        ivUsb = getActivity().findViewById(R.id.iv_usb);
+        tvTipsMemory = getActivity().findViewById(R.id.tv_tipsMemory);
+        tvTipsNet = getActivity().findViewById(R.id.tv_tipsNet);
 
-        ivBack.setOnClickListener(this);
-        tvRight.setOnClickListener(this);
-        tvTitle.setOnClickListener(this);
+        tvBack.setOnClickListener(this);
     }
 
     @Override
@@ -169,13 +179,6 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
         ActivitySwitcher.finish(getActivity());
     }
 
-    public void titleClick() {
-
-    }
-
-    public void rightClick() {
-
-    }
 
     @Override
     public boolean onBackPressed() {
@@ -224,17 +227,57 @@ public abstract class BaseMvpFragment<V extends BaseFrgView, T extends BaseFrgPr
         imm.hideSoftInputFromWindow(getActivity().getWindow().getDecorView().getWindowToken(), 0);
     }
 
+    /**
+     * 设置设备时间
+     *
+     * @param time
+     */
+    public void setTime(String time) {
+        TypeSafer.text(tvTime, time);
+    }
+
     @SuppressLint("InvalidR2Usage")
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.tv_title) {
-            titleClick();
-        } else if (i == R.id.tv_right) {
-            rightClick();
-        } else if (i == R.id.iv_back) {
+        if (i == R.id.tv_back) {
             back();
 
         }
+    }
+
+    @Override
+    public void setBackText(String backText) {
+        TypeSafer.text(tvBack,backText);
+    }
+
+    @Override
+    public void hideMemoryTips() {
+        tvTipsMemory.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showMemoryTips() {
+        tvTipsMemory.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideNetTips() {
+        tvTipsNet.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showNetTips() {
+        tvTipsNet.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideBack() {
+        tvBack.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showBack() {
+        tvBack.setVisibility(View.VISIBLE);
     }
 }

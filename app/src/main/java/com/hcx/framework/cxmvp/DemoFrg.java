@@ -48,18 +48,7 @@ public class DemoFrg extends BaseMvpFragment implements DemoView {
 
     @Override
     public void initView(View view) {
-        TypeSafer.text(tv,"你好");
-        TypeSafer.text(tvRight,"右边");
+        setTime("09:00:00");
     }
 
-    @Override
-    public void titleClick() {
-
-        showMsg("点击标题");
-    }
-
-    @Override
-    public void rightClick() {
-        showMsg("点击右边");
-    }
 }
